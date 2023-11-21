@@ -14,12 +14,6 @@ import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Header from "../Components/Header";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
 import Welcome from "./Welcome";
 function Copyright(props) {
   return (
@@ -57,12 +51,12 @@ export default function SignInSide() {
         "http://localhost:8081/api/auth/login",
         formData
       );
-
-      const { accessToken } = response.data;
+      const { accessToken, type, refreshToken, id, role } = response.data;
       localStorage.setItem("token", accessToken);
-      const { refreshToken } = response.data;
+      localStorage.setItem("tokenType", type);
       localStorage.setItem("refreshToken", refreshToken);
-      // <Route index element={<Welcome />} />;
+      localStorage.setItem("userId", id);
+      localStorage.setItem("userRole", role.substring(5));
       window.location.href = "http://localhost:3000/welcome";
     } catch (error) {
       console.error("login error:", error);

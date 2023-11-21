@@ -12,6 +12,7 @@ const RegistrationForm = () => {
     nationality: "georgia",
     age: "65",
   });
+  // 99e40b4d-b3d9-43b0-8d09-c180f119b8cb
 
   const handleChange = (e) => {
     const { name, value } = e.target;
